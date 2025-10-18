@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Blossoming7 - Online Ticket Sales</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background-color: #7b3fe4;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      position: relative;
+    }
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: transparent;
+      mix-blend-mode: multiply;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+    header h1 {
+      margin: 10px 0 5px 0;
+      font-size: 28px;
+    }
+    header p {
+      font-size: 14px;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #612cc1;
+      text-align: center;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main container */
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #7b3fe4;
+    }
+
+    /* Event grid */
+    .events {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .event {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.2s;
+    }
+    .event:hover {
+      transform: translateY(-5px);
+    }
+    .event img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+    .event-details {
+      padding: 15px;
+    }
+    .event button {
+      background-color: #7b3fe4;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .event button:hover {
+      background-color: #5e2db5;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #612cc1;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+    .modal-content h3 {
+      color: #7b3fe4;
+      margin-bottom: 10px;
+    }
+    .modal-content p {
+      margin-bottom: 15px;
+    }
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      background-color: #7b3fe4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .modal-content button:hover {
+      background-color: #5e2db5;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .note {
+      background:#fff8e6;border-left:4px solid #ffd166;padding:10px;border-radius:8px;margin-top:12px
+    }
+  </style>
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+</head>
+<body>
+
+  <header>
+    <img src="images/logo.png" alt="The Blossoming7 Logo">
+    <h1>🌸Blossoming Seven</h1>
+    <p>Your trusted online ticket partner</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="announcements.html">Announcements</a>
+    <a href="about.html">About Us</a>
+  </nav>
+
+  <div class="container" id="home">
+    <h2 style="text-align:center;">Welcome to The Blossoming Seven</h2>
+    <p style="text-align:center;">Discover and buy tickets for your favorite concerts, events, and shows — all in one place.</p>
+  </div>
+
+  <div class="container" id="events">
+    <h2>Upcoming Events</h2>
+    <div class="events">
+      <div class="event">
+        <img src="images/talent-show.jpg" alt="Talent Show Poster">
+        <div class="event-details">
+          <h3>Talanta Mtaani</h3>
+          <p>Date: 20th Oct 2025</p>
+          <p>Location: Marina Stadium</p>
+          <button onclick="openModal('Talanta Mtaani', 100)">Buy Ticket</button>
+        </div>
+      </div>
+      <div id="" class="event">
+        <img src="images/mombasa-trip.jpg" alt="Mombasa Trip Poster">
+        <div class="event-details">
+          <h3>Mombasa Trip</h3>
+          <p>Date: 27th Dec 2025</p>
+          <p>Duration: 1 Week</p>
+          <button onclick="openModal('Mombasa Trip', 7000)">Buy Ticket</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <p>Contact us: info@theblossoming7.com | +254 720 011 930</p>
+    <p>&copy; 2025 The Blossoming7. All rights reserved.</p>
+  </footer>
+
+  <!-- Modal Popup -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="modalEventName"></h3>
+      <p><strong>Ticket Price:</strong> KES <span id="modalAmount"></span></p>
+
+      <label>Number of Tickets:</label>
+      <input type="number" id="ticketQuantity" min="1" value="1" onchange="updateTotal()">
+
+      <p><strong>Total Price:</strong> KES <span id="totalAmount"></span></p>
+
+      <label>Enter your email address:</label>
+      <input type="email" id="emailAddress" placeholder="e.g. johndoe@gmail.com" required>
+
+      <button onclick="proceedToPay()">Continue to Payment</button>
+    </div>
+  </div>
+
+  <script>
+    let selectedEvent = '';
+    let selectedAmount = 0;
+
+    function openModal(eventName, amount) {
+      selectedEvent = eventName;
+      selectedAmount = amount;
+      document.getElementById('modalEventName').innerText = eventName;
+      document.getElementById('modalAmount').innerText = amount;
+      document.getElementById('ticketQuantity').value = 1;
+      document.getElementById('totalAmount').innerText = amount;
+      document.getElementById('paymentModal').style.display = 'block';
+    }
+
+    function updateTotal() {
+      const quantity = parseInt(document.getElementById('ticketQuantity').value) || 1;
+      const total = quantity * selectedAmount;
+      document.getElementById('totalAmount').innerText = total;
+    }
+
+    function closeModal() {
+      document.getElementById('paymentModal').style.display = 'none';
+    }
+
+    function proceedToPay() {
+      const email = document.getElementById('emailAddress').value.trim();
+      const quantity = parseInt(document.getElementById('ticketQuantity').value) || 1;
+      const totalAmount = quantity * selectedAmount;
+
+      if (email === '' || !email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      closeModal();
+
+      let handler = PaystackPop.setup({
+        key: 'pk_live_b0a29d1d61268d8efd7d0b7e0159b6b036a0d124', // Replace with your Paystack public key
+        email: email,
+        amount: totalAmount * 100,
+        currency: 'KES',
+        metadata: {
+          custom_fields: [
+            { display_name: 'Email', variable_name: 'email', value: email },
+            { display_name: 'Event', variable_name: 'event_name', value: selectedEvent },
+            { display_name: 'Tickets', variable_name: 'ticket_quantity', value: quantity }
+          ]
+        },
+        callback: function(response) {
+          alert('✅ Payment complete! Reference: ' + response.reference + '\nA confirmation email will be sent to ' + email);
+        },
+        onClose: function() {
+          alert('Payment window closed.');
+        }
+      });
+      handler.openIframe();
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      let modal = document.getElementById('paymentModal');
+      if (event.target == modal) closeModal();
+    }
+
+    // ----- dynamic events loader from admin (localStorage) -----
+    (function(){
+      try{
+        const evJson = localStorage.getItem('blossoming_events');
+        if(evJson){
+          const events = JSON.parse(evJson);
+          if(events && events.length){
+            const listWrap = document.createElement('div');
+            listWrap.className = 'events';
+            events.forEach(ev=>{
+              const div = document.createElement('div');
+              div.className = 'event';
+              div.innerHTML = `
+                <img src="${ev.imageUrl || 'images/talent-show.jpg'}" alt="${ev.title}">
+                <div class="event-details">
+                  <h3>${ev.title}</h3>
+                  <p>Date: ${ev.date || ''}</p>
+                  <p>Location: ${ev.location || ''}</p>
+                  <button onclick="openModal('${ev.title.replace(/'/g,"\\'")}', ${ev.price || 0})">Buy Ticket</button>
+                </div>`;
+              listWrap.appendChild(div);
+            });
+            const eventsSection = document.querySelector('#events .events');
+            if(eventsSection) eventsSection.replaceWith(listWrap);
+          }
+        }
+      }catch(e){ console.warn('Load events from localStorage failed', e); }
+    })();
+  </script>
+
+</body>
+</html>
